@@ -1,0 +1,21 @@
+import base64
+import io
+from PIL import Image
+
+Task 1 - Decode base64 string - 
+
+def decode_base64(image_str):
+
+    base64_string = image_str
+    decoded_string = io.BytesIO(base64.b64decode(base64_string))
+
+    img = Image.open(decoded_string)
+    img.save("D:\/Fishbowl\/fishbowl-api-new\/new_img.jpg")
+
+or
+
+def decode_base64(image_str):
+    base64_string = image_str
+    decoded_string = io.BytesIO(base64.b64decode(base64_string.encode('UTF-8')))
+    encoded_img = base64.b64encode(decoded_string.read())
+    return encoded_img
